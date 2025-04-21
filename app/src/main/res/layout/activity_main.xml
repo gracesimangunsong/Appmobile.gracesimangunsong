@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Selamat Datang!"
+            android:textColor="#43A047"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Nikmati setiap seduhan matcha favoritmu."
+            android:textColor="#616161"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/coffecat_logo"
+            android:layout_marginTop="32dp"
+            android:contentDescription="Logo Matcha App"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Masuk"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btnStream"
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Pilih Matcha Favoritmu"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+</ScrollView>
+
+
