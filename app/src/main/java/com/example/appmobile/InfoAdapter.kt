@@ -1,38 +1,14 @@
 package com.example.appmobile
 
 import android.content.Intent
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class InfoAdapter(private val list: List<String>) : RecyclerView.Adapter<InfoAdapter.InfoViewHolder>() {
-
-    private val images = listOf(
-        R.drawable.matcha_latte,
-        R.drawable.matcha_ice,
-        R.drawable.matcha_espreso,
-        R.drawable.matcha_frape,
-        R.drawable.matcha_milkshake
-    )
-
-    private val titles = listOf(
-        "Matcha Latte",
-        "Matcha Ice",
-        "Matcha Espresso",
-        "Matcha Frappe",
-        "Matcha Milkshake"
-    )
-
-    private val descriptions = listOf(
-        "Matcha hangat dengan susu lembut.",
-        "Matcha dingin segar dengan es batu.",
-        "Paduan matcha dan espresso yang kuat.",
-        "Matcha diblender dengan es dan susu.",
-        "Milkshake lembut dengan rasa matcha premium."
-    )
-
-
+class InfoAdapter(private val list: List<Product>) : RecyclerView.Adapter<InfoAdapter.InfoViewHolder>() {
 
 
 
@@ -41,6 +17,17 @@ class InfoAdapter(private val list: List<String>) : RecyclerView.Adapter<InfoAda
         val tvDesc: TextView = itemView.findViewById(R.id.tvDesc)
         val imgCoffee: ImageView = itemView.findViewById(R.id.imgCoffee)
 
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                val context = itemView.context
+                val product = list[position]
+                val intent = Intent(context, DetailActivity::class.java)
+                intent.putExtra("product", product) // Kirim product sebagai Serializable
+                context.startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InfoViewHolder {
@@ -49,30 +36,11 @@ class InfoAdapter(private val list: List<String>) : RecyclerView.Adapter<InfoAda
     }
 
     override fun onBindViewHolder(holder: InfoViewHolder, position: Int) {
-        holder.tvTitle.text = titles[position]
-        holder.tvDesc.text = descriptions[position]
-        holder.itemView.setOnClickListener {
-
-            val context = holder.itemView.context
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("image", images[position])
-            intent.putExtra("title", titles[position])
-            intent.putExtra("desc", descriptions[position])
-            context.startActivity(intent)
-        }
-
-
-
-        holder.imgCoffee.setImageResource(images[position])
-
-
-        holder.tvTitle.text = titles[position]
-        holder.tvDesc.text = descriptions[position]
-
+        val product = list[position]
+        holder.tvTitle.text = product.name
+        holder.tvDesc.text = product.description
+        holder.imgCoffee.setImageResource(product.imageResId)
     }
 
     override fun getItemCount(): Int = list.size
 }
-
-
-

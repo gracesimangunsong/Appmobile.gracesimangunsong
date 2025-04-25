@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:orientation="vertical"
-    android:background="#FFF8F0"
+    android:background="#AFE07D"
     android:padding="24dp"
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/coffecat_logo"
+        tools:ignore="ContentDescription" />
+
+
     <TextView
-        android:text="CoffeCat"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#6F4E37"
-        android:layout_marginBottom="32dp"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:background="@color/white"
+        android:text="CoffeCat"
+        android:textColor="#6F4E37"
+        android:textSize="32sp"
+        android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -39,22 +49,22 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        tools:ignore="Autofill,HardcodedText" />
+        tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:text="Login"
-        android:textColor="#FFF8F0"
-        android:background="#6F4E37"
-        android:layout_marginTop="24dp"
-        android:layout_width="match_parent"
+        android:layout_width="174dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#A45FB6"
+        android:text="Login"
+        android:textColor="@color/black"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvForgot"
         android:text="Lupa password?"
-        android:textColor="#6F4E37"
+        android:textColor="@color/black"
         android:layout_marginTop="12dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
@@ -64,7 +74,7 @@
     <TextView
         android:id="@+id/tvRegister"
         android:text="Belum punya akun? Register"
-        android:textColor="#6F4E37"
+        android:textColor="@color/black"
         android:layout_marginTop="8dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

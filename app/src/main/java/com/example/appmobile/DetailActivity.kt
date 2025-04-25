@@ -4,8 +4,18 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.io.Serializable
 
-class DetailActivity : AppCompatActivity() {
+abstract class DetailActivity : AppCompatActivity() {
+    data class Product(
+        val imageResId: Int,
+        val name: String,
+        val description: String
+    ) : Serializable
+
+
+
+    abstract val root: Any
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,25 +1,25 @@
 package com.example.appmobile
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 
-class ProfileActivity : AppCompatActivity() {
+class YourActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(R.layout.activity_login)
 
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_option, menu)
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -29,14 +29,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             R.id.menu_logout -> {
-                val sharedPref = getSharedPreferences("user_session", MODE_PRIVATE)
-                sharedPref.edit {
-                    clear()
-                }
 
-                val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
-                startActivity(intent)
-                finish() // Hapus ProfileActivity dari stack
                 true
             }
 
@@ -44,6 +37,5 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 }
-
 
 

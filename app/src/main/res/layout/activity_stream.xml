@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/coffecat_logo"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-10dp"
-        tools:layout_editor_absoluteY="-228dp" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="-175dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
