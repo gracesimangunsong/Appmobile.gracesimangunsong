@@ -17,18 +17,18 @@ class InfoAdapter(private val list: List<Product>) : RecyclerView.Adapter<InfoAd
         val tvDesc: TextView = itemView.findViewById(R.id.tvDesc)
         val imgCoffee: ImageView = itemView.findViewById(R.id.imgCoffee)
 
-
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
                 val context = itemView.context
                 val product = list[position]
                 val intent = Intent(context, DetailActivity::class.java)
-                intent.putExtra("product", product) // Kirim product sebagai Serializable
+                intent.putExtra("product", product)
                 context.startActivity(intent)
             }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InfoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_info, parent, false)
@@ -44,3 +44,4 @@ class InfoAdapter(private val list: List<Product>) : RecyclerView.Adapter<InfoAd
 
     override fun getItemCount(): Int = list.size
 }
+

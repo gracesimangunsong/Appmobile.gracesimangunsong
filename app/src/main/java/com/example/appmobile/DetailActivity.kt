@@ -3,19 +3,10 @@ package com.example.appmobile
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.io.Serializable
 
-abstract class DetailActivity : AppCompatActivity() {
-    data class Product(
-        val imageResId: Int,
-        val name: String,
-        val description: String
-    ) : Serializable
-
-
-
-    abstract val root: Any
+class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,19 +16,14 @@ abstract class DetailActivity : AppCompatActivity() {
         val tvDetailTitle: TextView = findViewById(R.id.tvDetailTitle)
         val tvDetailDesc: TextView = findViewById(R.id.tvDetailDesc)
 
-
-        val imageRes = intent.getIntExtra("image", 0)
-        val title = intent.getStringExtra("title")
-        val desc = intent.getStringExtra("desc")
-
-
-        if (imageRes != 0) {
-            imgDetail.setImageResource(imageRes)
-
-
-            imgDetail.setImageResource(imageRes)
-            tvDetailTitle.text = title
-            tvDetailDesc.text = desc
+        val product = intent.getSerializableExtra("product") as? Product
+        if (product != null) {
+            imgDetail.setImageResource(product.imageResId)
+            tvDetailTitle.text = product.name
+            tvDetailDesc.text = product.description
+        } else {
+            Toast.makeText(this, "Data produk tidak tersedia", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 }

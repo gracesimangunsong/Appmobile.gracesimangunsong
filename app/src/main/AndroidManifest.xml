@@ -31,10 +31,10 @@
         <!-- Aktivitas lainnya -->
         <activity android:name=".LogoutActivity" android:exported="false"
             tools:ignore="MissingClass" />
+        <activity android:name=".DetailActivity" />
         <activity android:name=".ProfileActivity" android:exported="false" />
         <activity android:name=".RegisterActivity" android:exported="false" />
         <activity android:name=".ForgotPasswordActivity" android:exported="false" />
-        <activity android:name=".DetailActivity" android:exported="false" />
         <activity android:name=".StreamActivity" android:exported="false" />
 
     </application>

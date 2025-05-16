@@ -36,7 +36,7 @@
                 android:text="Matcha Latte"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#B3305F"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:ignore="HardcodedText" />
