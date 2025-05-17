@@ -1,84 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
-    android:orientation="vertical"
-    android:background="#AFE07D"
-    android:padding="24dp"
-    android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/coffecat_logo"
-        tools:ignore="ContentDescription" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/matcha_background"
+        android:alpha="0.7"
+        android:contentDescription="@string/background_image" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="32dp"
-        android:background="@color/white"
-        android:text="CoffeCat"
-        android:textColor="#6F4E37"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/etEmail"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:backgroundTint="#6F4E37"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        tools:ignore="HardcodedText" />
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_centerInParent="true">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#6F4E37"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/coffecat_logo"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/logo" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="174dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="#A45FB6"
-        android:text="Login"
-        android:textColor="@color/black"
-        tools:ignore="HardcodedText" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Email"
+            app:hintTextColor="#FFFFFF"
+            app:boxStrokeColor="#FFFFFF">
 
-    <TextView
-        android:id="@+id/tvForgot"
-        android:text="Lupa password?"
-        android:textColor="@color/black"
-        android:layout_marginTop="12dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="HardcodedText" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#D1FFFFFF"
+                android:minHeight="48dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tvRegister"
-        android:text="Belum punya akun? Register"
-        android:textColor="@color/black"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="HardcodedText" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Password"
+            app:hintTextColor="#FFFFFF"
+            app:boxStrokeColor="#FFFFFF"
+            app:passwordToggleEnabled="true">
 
-</LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#D1FFFFFF"
+                android:minHeight="48dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account? "
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="48dp" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?" />
+
+    </LinearLayout>
+
+</RelativeLayout>

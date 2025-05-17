@@ -2,59 +2,72 @@ package com.example.appmobile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appmobile.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
+
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
-    private lateinit var btnLoginConfirm: Button
-    private lateinit var tvRegister: TextView
-    private lateinit var tvForgot: TextView
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
-        btnLoginConfirm = findViewById(R.id.btnLogin)
-        tvRegister = findViewById(R.id.tvRegister)
-        tvForgot = findViewById(R.id.tvForgot)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        btnLoginConfirm.setOnClickListener {
-            val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString().trim()
+        binding.btnLogin.setOnClickListener {
+            val email = binding.edtEmail.text.toString()
+            val password = binding.edtPassword.text.toString()
 
-            when {
-                email.isEmpty() -> {
-                    Toast.makeText(this, "Email tidak boleh kosong!", Toast.LENGTH_SHORT).show()
-                }
-                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    Toast.makeText(this, "Format email tidak valid!", Toast.LENGTH_SHORT).show()
-                }
-                password.isEmpty() -> {
-                    Toast.makeText(this, "Password tidak boleh kosong!", Toast.LENGTH_SHORT).show()
-                }
-                else -> {
-                    Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainActivity::class.java))
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Email dan password harus diisi", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            loginUser(email, password)
+        }
+
+        binding.tvRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvForgotPassword.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java) // Corrected line
+            startActivity(intent)
+        }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
+                    // Ganti HomePageActivity dengan Activity yang sesuai
+                    val intent = Intent(this, MainActivity::class.java) // Misalnya, MainActivity
+                    startActivity(intent)
                     finish()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Login gagal: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
-        }
+    }
 
-        tvRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
-
-        tvForgot.setOnClickListener {
-            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+    override fun onStart() {
+        super.onStart()
+        if (firebaseAuth.currentUser != null) {
+            // Ganti HomePageActivity dengan Activity yang sesuai
+            val intent = Intent(this, MainActivity::class.java) // Misalnya, MainActivity
+            startActivity(intent)
+            finish()
         }
     }
 }

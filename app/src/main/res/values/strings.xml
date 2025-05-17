@@ -3,5 +3,6 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_logout">Logout</string>
     <string name="product_image_desc">Gambar produk</string>
-
+    <string name="background_image">matcha_back</string>
+    <string name="logo">coffecat_logo</string>
 </resources>
